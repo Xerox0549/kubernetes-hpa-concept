@@ -8,30 +8,14 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: apache-yment
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 5
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 5
-    - type: Resource
-      resource:
-        name: requests
-        target:
-          type: AverageValue
-          averageValue: "200Mi"
-    - type: Resource
-      
-
-
-
+minReplicas: 1
+maxReplicas: 5
+metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 5
+        
 
