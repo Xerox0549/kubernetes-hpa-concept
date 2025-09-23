@@ -110,4 +110,19 @@ kubectl get hpa -n appache-ns
 
 ---
 
+## HPA trafic accelaration 
+
+'''bash
+kubectl run -i --tty load-generator --rm --image=busybox /bin/sh
+'''
+
+after that we will use @loat_test.py file into the bash script
+
+And open another terminal for watich the cpu utilization
+'''bash
+kubectl get hpa -n appache --watch
+'''
+
+
+
 ⚡ Done! You now have **Apache + HPA** running on a **kind cluster**.
