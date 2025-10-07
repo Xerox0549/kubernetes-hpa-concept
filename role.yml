@@ -1,0 +1,9 @@
+kind: user 
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: apache-manager
+  namespace: apache 
+rules:
+  - apiGroups: ["", "apps", "autoscaling.k8s.io", "batch"]
+    resources: ["pods", "deployments", "verticalpodautoscalers","services"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
