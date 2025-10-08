@@ -4,7 +4,10 @@ metadata:
   name: apache-manager-rolebinding
   namespace: apache
 subjects:
-  - kind: ServiceAccount
+  - kind: user
+    name: apache-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: Role
     name: apache-manager
-    namespace: apache
-    
+    apiGroup: rbac.authorization.k8s.io
