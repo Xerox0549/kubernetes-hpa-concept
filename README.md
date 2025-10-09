@@ -146,9 +146,9 @@ kubectl apply -f namespace.yml
 
 kubectl auth can-I get pods -n apache
 ```
--- here is the problem if we give access whole access to everyone is risky so we use role for perticuler persion
+- here is the problem if we give access whole access to everyone is risky so we use role for perticuler persion
 
--- as example for a new member can not able to control access of company
+- as example for a new member can not able to control access of company
 Bash 
 ```
 kubectl apply -f deployment.yml 
@@ -159,7 +159,7 @@ kubectl auth can-I delete deployment -n apache
 ```
 - there result is unbelievable its say is you can delete but its risky so we use role for particular person
 
--make a role.yml
+- make a role.yml
 bash 
 ```
 kubectl apply -f role.yml
@@ -170,7 +170,7 @@ bash
 kubectl get role -n apache
 ```
 
--- but firstly make a service account.yml
+- but firstly make a service account.yml
 bash 
 ```
 vim service-account.yml
@@ -178,7 +178,7 @@ vim service-account.yml
 kubectl apply -f service-account.yml
 ```
 
--- now check the service account
+- now check the service account
 bash
 ```
 kubectl get serviceaccount -n apache
