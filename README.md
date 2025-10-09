@@ -17,6 +17,7 @@ appache/
 
 ---
 
+
 ## 🚀 Steps to Run
 
 ### 1️⃣ Create Project Directory
@@ -112,23 +113,30 @@ kubectl get hpa -n appache-ns
 
 ## HPA trafic accelaration 
 
-'''bash
+bash
+```
 kubectl run -i --tty load-generator --rm --image=busybox /bin/sh
-'''
+```
 
-after that we will use @loat_test.py file into the bash script
+- after that we will use @loat_test.py file into the bash script
 
-And open another terminal for watich the cpu utilization
+- And open another terminal for watich the cpu utilization
 
-'''bash
+bash
+```
 kubectl get hpa -n appache --watch
-'''
-After 2 minute the script will close automatacally 
+```
+- After 2 minute the script will close automatacally 
 
-so inn between check the 
-
+- so in between check the 
+```
 kubectl get pods -n apache 
 kubectl get deployment -n apache
+```
+
+
+
+
 and here you can see the cpu utilation is inclease and number of pods are also upgraded
 
 
