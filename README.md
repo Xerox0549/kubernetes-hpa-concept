@@ -111,7 +111,7 @@ kubectl get hpa -n appache-ns
 
 ---
 
-## HPA trafic accelaration 
+##  HPA trafic accelaration 
 
 bash
 ```
@@ -133,13 +133,81 @@ kubectl get hpa -n appache --watch
 kubectl get pods -n apache 
 kubectl get deployment -n apache
 ```
+- And here you can see the cpu utilation is inclease and number of pods are also upgraded
 
+## Role create and use how to make a role and binding 
+Bash
+```
+kubectl auth whoami 
 
+kubectl can-I get pods
 
+kubectl apply -f namespace.yml
 
-and here you can see the cpu utilation is inclease and number of pods are also upgraded
+kubectl auth can-I get pods -n apache
+```
+-- here is the problem if we give access whole access to everyone is risky so we use role for perticuler persion
 
+-- as example for a new member can not able to control access of company
+Bash 
+```
+kubectl apply -f deployment.yml 
 
+kubectl auth can-I get deployement -n apache
+
+kubectl auth can-I delete deployment -n apache
+```
+- there result is unbelievable its say is you can delete but its risky so we use role for particular person
+
+-make a role.yml
+bash 
+```
+kubectl apply -f role.yml
+```
+- time to check role 
+bash 
+```
+kubectl get role -n apache
+```
+
+-- but firstly make a service account.yml
+bash 
+```
+vim service-account.yml
+
+kubectl apply -f service-account.yml
+```
+
+-- now check the service account
+bash
+```
+kubectl get serviceaccount -n apache
+
+kubectl auth can-i get pods -n apache
+
+kubectl auth can-i get pods --as=apache-user -n apache 
+
+kubectl auth can-i get deployment --as=apache-user -n apache 
+
+kubectl auth can-i get service --as=apache-user -n apache 
+```
+
+- all have no permissions 
+
+- now here create a roll binding
+bash
+```
+vim role-binding.yml
+
+apply role-binding file
+
+kubectl get rolebinding -n apache
+```
+- now time to check role configuration
+bash
+```
+kubectl auth can-i get pods --as=apache-user -n apache
+```
 
 
 ⚡ Done! You now have **Apache + HPA** running on a **kind cluster**.
