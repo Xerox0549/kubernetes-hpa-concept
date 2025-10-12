@@ -140,7 +140,7 @@ Bash
 ```
 kubectl auth whoami 
 
-kubectl can-I get pods
+kubectl auth can-i get pods
 
 kubectl apply -f namespace.yml
 
